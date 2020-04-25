@@ -1,4 +1,6 @@
---top_5_tracks.sql: Provide a query that shows the top 5 most purchased songs.
+--top_media_type.sql: Provide a query that shows the most purchased Media Type.
+
+
 
 select TOP 1 MAX(mediaCount) as Media_Count, medCount.Name
 from (select COUNT(t.MediaTypeId) as mediaCount, t.MediaTypeId, m.Name
