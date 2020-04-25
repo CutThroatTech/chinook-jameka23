@@ -1,19 +1,14 @@
---select MAX(Count(Total)), BillingCountry
---from Invoice
---Group By BillingCountry
+--top_country.sql: Which country's customers spent the most?
 
---select MAX(Highest_Total), BillingCountry
---from (select SUM(Total) as Highest_Total, BillingCountry
---from Invoice
---group by BillingCountry)
---group by BillingCountry
+select TOP 1 MAX(CountryTotalSales) as TotalCountrySales, BillingCountry
+from (select SUM(Total) as CountryTotalSales, BillingCountry
+	from Invoice
+	group by BillingCountry) as TotalSales
+group by BillingCountry
+order by TotalCountrySales desc
 
---SELECT MAX(Total_High) as bull, BillingCountry
---FROM (SELECT SUM(Total)as Total_High, BillingCountry FROM Invoice GROUP BY BillingCountry) as something
---group by BillingCountry
---order by
+-- SIMPLIER 
 
--- 23. Which country's customers spent the most?
 SELECT TOP 1 SUM(Total)as Total_High, BillingCountry 
 FROM Invoice 
 GROUP BY BillingCountry
