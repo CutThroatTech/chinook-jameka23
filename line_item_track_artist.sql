@@ -8,3 +8,4 @@ FROM InvoiceLine i
 JOIN Track t on t.TrackId = i.TrackId
 JOIN Album al ON al.AlbumId = t.AlbumId
 JOIN Artist art ON art.ArtistId = al.ArtistId
+ORDER BY i.InvoiceId
